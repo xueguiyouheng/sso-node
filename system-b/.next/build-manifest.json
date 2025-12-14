@@ -32,6 +32,36 @@
       "static/chunks/main.js",
       "static/chunks/pages/docker-commands.js"
     ],
+    "/login-system": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/login-system.js"
+    ],
+    "/profile": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/profile.js"
+    ],
+    "/sso-server": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/sso-server.js"
+    ],
+    "/system-a": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/system-a.js"
+    ],
+    "/system-b": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/system-b.js"
+    ],
+    "/test-cases": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/test-cases.js"
+    ],
     "/users": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

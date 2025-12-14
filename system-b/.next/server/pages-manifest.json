@@ -2,8 +2,13 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/docker-commands": "pages/docker-commands.js",
-  "/users": "pages/users.js",
   "/": "pages/index.js",
-  "/login-system": "pages/login-system.js"
+  "/users": "pages/users.js",
+  "/profile": "pages/profile.js",
+  "/docker-commands": "pages/docker-commands.js",
+  "/system-a": "pages/system-a.js",
+  "/sso-server": "pages/sso-server.js",
+  "/system-b": "pages/system-b.js",
+  "/login-system": "pages/login-system.js",
+  "/test-cases": "pages/test-cases.js"
 }

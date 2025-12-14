@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import AuthService from '../../services/authService';
-import ProfileForm from './ProfileForm';
+import Navigation from '../Navigation';
+import './ProfilePage.css';
 
-const ProfilePage = () => {
+const ProfilePage = ({ 
+  currentPage, 
+  onNavigateToProfile, 
+  onNavigateToHome, 
+  onNavigateToHooks, 
+  onNavigateToPatterns,
+  onNavigateToJavascript,
+  onLogout 
+}) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
@@ -39,64 +48,57 @@ const ProfilePage = () => {
     }, 3000);
   };
 
-  const handleProfileUpdate = async (profileData) => {
+  const handleLogout = async () => {
     try {
-      const response = await AuthService.updateUserProfile(user.id, profileData);
-      setUser(response);
-      showMessage('个人资料更新成功', 'success');
+      await AuthService.logout();
+      if (onLogout) {
+        onLogout();
+      }
+      window.location.href = 'http://localhost:3002';
     } catch (error) {
-      console.error('更新个人资料失败:', error);
-      showMessage('更新个人资料失败: ' + (error.response?.data?.error || '未知错误'), 'error');
-    }
-  };
-
-  const handleChangePassword = async (passwordData) => {
-    try {
-      await AuthService.changePassword(user.id, passwordData);
-      showMessage('密码修改成功', 'success');
-    } catch (error) {
-      console.error('修改密码失败:', error);
-      showMessage('修改密码失败: ' + (error.response?.data?.error || '未知错误'), 'error');
+      console.error('登出失败:', error);
     }
   };
 
   if (loading) {
-    return <div className="container">加载中...</div>;
+    return <div className="page-container"><div className="loading">加载中...</div></div>;
   }
 
   return (
-    <div className="container">
-      <header className="header">
-        <h1>个人资料</h1>
-        <button className="btn btn-danger" onClick={() => {
-          AuthService.logout().then(() => {
-            window.location.href = 'http://localhost:3002';
-          });
-        }}>
-          登出
-        </button>
-      </header>
+    <div className="page-container">
+      <Navigation 
+        authenticated={!!user}
+        user={user}
+        currentPage={currentPage}
+        onNavigateToProfile={onNavigateToProfile}
+        onNavigateToHome={onNavigateToHome}
+        onNavigateToHooks={onNavigateToHooks}
+        onNavigateToPatterns={onNavigateToPatterns}
+        onNavigateToJavascript={onNavigateToJavascript}
+        onLogout={handleLogout}
+      />
 
-      <div className="content">
-        {message && (
-          <div className={`message ${messageType}`}>
-            {message}
+      <div className="content-wrapper">
+        <div className="profile-container">
+          {message && (
+            <div className={`message ${messageType}`}>
+              {message}
+            </div>
+          )}
+
+          <div className="profile-section">
+            <h2>用户资料</h2>
+            <div className="profile-info">
+              <p><strong>用户名:</strong> {user?.username}</p>
+              <p><strong>注册时间:</strong> {user?.createdAt ? new Date(user.createdAt).toLocaleString() : ''}</p>
+            </div>
+            
+            <div className="profile-actions">
+              <button className="btn" onClick={onNavigateToHome}>
+                返回首页
+              </button>
+            </div>
           </div>
-        )}
-
-        <div className="profile-section">
-          <h2>基本信息</h2>
-          <p><strong>用户名:</strong> {user?.username}</p>
-          <p><strong>注册时间:</strong> {user?.createdAt ? new Date(user.createdAt).toLocaleString() : ''}</p>
-        </div>
-
-        <div className="profile-section">
-          <h2>编辑个人资料</h2>
-          <ProfileForm 
-            user={user} 
-            onUpdateProfile={handleProfileUpdate} 
-            onChangePassword={handleChangePassword} 
-          />
         </div>
       </div>
     </div>

@@ -5,34 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.nav-links a {
-  margin-right: 1rem;
-  text-decoration: none;
-  color: #007bff;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-.content {
+}.content {
   padding: 2rem 0;
 }
 
