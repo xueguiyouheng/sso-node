@@ -1,0 +1,9 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/docker-commands": "pages/docker-commands.js",
+  "/users": "pages/users.js",
+  "/": "pages/index.js",
+  "/login-system": "pages/login-system.js"
+}

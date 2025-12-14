@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Exported data
+data-export/exports/
+
+# System files
+.DS_Store
+Thumbs.db

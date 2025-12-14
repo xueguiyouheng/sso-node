@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.nav-links a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 2rem 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.user-info {
+  background-color: #e9ecef;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.protected-content {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  box-sizing: border-box; /* Ensure padding doesn't add to width */
+  width: 100%; /* Explicitly set width to 100% */
+}
+
+.profile-field {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.profile-field strong {
+  width: 100px;
+  font-weight: bold;
+}
+
+.profile-field span {
+  flex: 1;
+}
+
+/* Add responsive table styles to prevent horizontal overflow */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Helps with overflow control */
+}
+
+table th,
+table td {
+  word-wrap: break-word; /* Break long words */
+  padding: 0.5rem;
+  text-align: left;
+  border: 1px solid #dee2e6;
+}
+
+/* Prevent pre tags from causing overflow */
+pre {
+  white-space: pre-wrap; /* Wrap long lines */
+  word-wrap: break-word; /* Break long words */
+  overflow-x: auto; /* Allow horizontal scroll if needed */
+  max-width: 100%;
+}
+
+/* Ensure images don't cause overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
