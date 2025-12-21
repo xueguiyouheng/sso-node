@@ -72,33 +72,23 @@ const Layout = ({ children, activeMenu }) => {
               <li className={activeMenu === 'home' ? 'active' : ''}>
                 <Link href="/">首页</Link>
               </li>
-              {authenticated && (
-                <>
-                  <li className={activeMenu === 'profile' ? 'active' : ''}>
-                    <Link href="/profile">个人资料</Link>
-                  </li>
-                  <li className={activeMenu === 'users' ? 'active' : ''}>
-                    <Link href="/users">用户列表</Link>
-                  </li>
-                  <li className={activeMenu === 'docker' ? 'active' : ''}>
-                    <Link href="/docker-commands">Docker命令</Link>
-                  </li>
-                </>
-              )}
-              <li className={activeMenu === 'system-a' ? 'active' : ''}>
-                <Link href="/system-a">System A</Link>
+              <li className={activeMenu === 'system-overview' ? 'active' : ''}>
+                <Link href="/system-overview">系统介绍</Link>
               </li>
-              <li className={activeMenu === 'system-b' ? 'active' : ''}>
-                <Link href="/system-b">System B</Link>
+              <li className={activeMenu === 'react-hooks' ? 'active' : ''}>
+                <Link href="/react-hooks">React Hooks</Link>
               </li>
-              <li className={activeMenu === 'login' ? 'active' : ''}>
-                <Link href="/login-system">登录系统</Link>
+              <li className={activeMenu === 'zustand' ? 'active' : ''}>
+                <Link href="/zustand">Zustand 状态管理</Link>
               </li>
-              <li className={activeMenu === 'sso' ? 'active' : ''}>
-                <Link href="/sso-server">SSO服务器</Link>
+              <li className={activeMenu === 'vite' ? 'active' : ''}>
+                <Link href="/vite-nextjs">Vite</Link>
               </li>
-              <li className={activeMenu === 'test-cases' ? 'active' : ''}>
-                <Link href="/test-cases">测试用例文档</Link>
+              <li className={activeMenu === 'nextjs' ? 'active' : ''}>
+                <Link href="/vite-nextjs">Next.js</Link>
+              </li>
+              <li className={activeMenu === 'browser' ? 'active' : ''}>
+                <Link href="/browser">浏览器</Link>
               </li>
             </ul>
           </nav>
@@ -141,7 +131,7 @@ const Layout = ({ children, activeMenu }) => {
           width: 150px; /* Fixed width of 150px */
           background-color: #fff;
           border-right: 1px solid #dee2e6;
-          padding: 1rem;
+          padding: 0.5rem; /* Reduced padding */
           position: fixed;
           top: 60px; /* Height of header */
           left: 0;
@@ -157,12 +147,12 @@ const Layout = ({ children, activeMenu }) => {
         }
         
         .sidebar li {
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.25rem; /* Reduced margin */
         }
         
         .sidebar a {
           display: block;
-          padding: 0.75rem 1rem;
+          padding: 0.5rem 0.75rem; /* Reduced padding */
           color: #495057;
           text-decoration: none;
           border-radius: 4px;
@@ -170,6 +160,7 @@ const Layout = ({ children, activeMenu }) => {
           white-space: nowrap; /* Prevent text wrapping */
           overflow: hidden;
           text-overflow: ellipsis;
+          font-size: 0.9rem; /* Slightly smaller font */
         }
         
         .sidebar a:hover {

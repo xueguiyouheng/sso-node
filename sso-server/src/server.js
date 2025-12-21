@@ -20,8 +20,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // 添加cookie解析中间件
 
 // CORS configuration
+const allowedOrigins = [
+  'http://localhost:3000',  // System A
+  'http://localhost:3002',  // 登录系统
+  'http://localhost:3003'   // System B
+];
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -128,10 +137,11 @@ app.post('/api/auth/register', async (req, res) => {
     // Generate JWT token
     const token = generateToken(savedUser);
     
-    // Set token in cookie
+    // Set token in cookie with enhanced security
     res.cookie('token', token, { 
       httpOnly: true, 
       secure: false, // Set to true in production with HTTPS
+      sameSite: 'strict', // Prevent CSRF attacks
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     });
     
@@ -167,10 +177,11 @@ app.post('/api/auth/login', async (req, res) => {
     // Generate JWT token
     const token = generateToken(user);
     
-    // Set token in cookie
+    // Set token in cookie with enhanced security
     res.cookie('token', token, { 
       httpOnly: true, 
       secure: false, // Set to true in production with HTTPS
+      sameSite: 'strict', // Prevent CSRF attacks
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     });
     
