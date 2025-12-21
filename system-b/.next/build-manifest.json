@@ -31,6 +31,26 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/browser.js"
+    ],
+    "/react-hooks": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/react-hooks.js"
+    ],
+    "/system-overview": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/system-overview.js"
+    ],
+    "/vite-nextjs": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/vite-nextjs.js"
+    ],
+    "/zustand": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/zustand.js"
     ]
   },
   "ampFirstPages": []

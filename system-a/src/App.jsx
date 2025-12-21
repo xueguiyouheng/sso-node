@@ -33,9 +33,21 @@ function App() {
     try {
       const authStatus = await AuthService.checkAuthStatus();
       setAuthenticated(authStatus.authenticated);
-      setUser(authStatus.user);
+      if (authStatus.authenticated) {
+        // Fetch user info if authenticated
+        try {
+          const userInfo = await AuthService.getUserInfo(authStatus.userId);
+          setUser(userInfo);
+        } catch (error) {
+          console.error('获取用户信息失败:', error);
+        }
+      } else {
+        setUser(null);
+      }
     } catch (error) {
       console.error('检查认证状态失败:', error);
+      setAuthenticated(false);
+      setUser(null);
     } finally {
       setLoading(false);
     }

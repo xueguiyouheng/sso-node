@@ -3,5 +3,9 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/browser": "pages/browser.js"
+  "/browser": "pages/browser.js",
+  "/system-overview": "pages/system-overview.js",
+  "/vite-nextjs": "pages/vite-nextjs.js",
+  "/react-hooks": "pages/react-hooks.js",
+  "/zustand": "pages/zustand.js"
 }
