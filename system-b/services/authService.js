@@ -9,6 +9,43 @@ const apiClient = axios.create({
   }
 });
 
+// Request interceptor to update token on each request
+apiClient.interceptors.request.use(async (config) => {
+  // Optionally, you can implement logic here to refresh token before each request
+  return config;
+});
+
+// Response interceptor to handle token refresh
+apiClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const originalRequest = error.config;
+    
+    // If token expired (401 error) and we haven't retried yet
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      
+      try {
+        // Attempt to refresh the token
+        await axios.post('/api/auth/refresh', {}, { withCredentials: true });
+        
+        // Retry the original request
+        return apiClient(originalRequest);
+      } catch (refreshError) {
+        // If refresh fails, redirect to login
+        if (typeof window !== 'undefined') {
+          window.location.href = 'http://localhost:3002';
+        }
+        return Promise.reject(refreshError);
+      }
+    }
+    
+    return Promise.reject(error);
+  }
+);
+
 class AuthService {
   // Check authentication status
   static async checkAuthStatus() {

@@ -12,11 +12,6 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -32,25 +27,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/browser.js"
     ],
-    "/react-hooks": [
+    "/iphone": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/react-hooks.js"
+      "static/chunks/pages/iphone.js"
     ],
-    "/system-overview": [
+    "/iphone-ref": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/system-overview.js"
+      "static/chunks/pages/iphone-ref.js"
     ],
-    "/vite-nextjs": [
+    "/iphone-showcase": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/vite-nextjs.js"
-    ],
-    "/zustand": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/zustand.js"
+      "static/chunks/pages/iphone-showcase.js"
     ]
   },
   "ampFirstPages": []

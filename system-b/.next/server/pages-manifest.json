@@ -2,10 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
   "/browser": "pages/browser.js",
-  "/system-overview": "pages/system-overview.js",
-  "/vite-nextjs": "pages/vite-nextjs.js",
-  "/react-hooks": "pages/react-hooks.js",
-  "/zustand": "pages/zustand.js"
+  "/iphone": "pages/iphone.js",
+  "/iphone-ref": "pages/iphone-ref.js",
+  "/iphone-showcase": "pages/iphone-showcase.js"
 }

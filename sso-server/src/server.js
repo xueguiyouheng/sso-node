@@ -67,6 +67,17 @@ const User = mongoose.model('User', userSchema);
 // Session configuration removed for JWT-only authentication
 
 // JWT utility functions
+const generateToken = (user) => {
+  return jwt.sign(
+    { 
+      userId: user._id, 
+      username: user.username 
+    }, 
+    JWT_SECRET, 
+    { expiresIn: '2h' } // 2 hours
+  );
+};
+
 const generateAccessToken = (user) => {
   return jwt.sign(
     { 
@@ -74,7 +85,7 @@ const generateAccessToken = (user) => {
       username: user.username 
     }, 
     JWT_SECRET, 
-    { expiresIn: '5m' } // 5 minutes
+    { expiresIn: '2h' } // 2 hours
   );
 };
 
@@ -114,7 +125,32 @@ const verifyToken = (token) => {
   }
 };
 
-// Routes
+// Middleware to refresh token on each API request
+const refreshTokenOnRequest = (req, res, next) => {
+  const token = req.cookies.token;
+  
+  if (token) {
+    const decoded = verifyToken(token);
+    if (decoded) {
+      // Generate a new token with updated expiration time
+      const user = { _id: decoded.userId, username: decoded.username };
+      const newToken = generateAccessToken(user);
+      
+      // Update the token in the cookie
+      res.cookie('token', newToken, { 
+        httpOnly: true, 
+        secure: false, // Set to true in production with HTTPS
+        sameSite: 'strict', // Prevent CSRF attacks
+        maxAge: 2 * 60 * 60 * 1000 // 2 hours
+      });
+    }
+  }
+  
+  next();
+};
+
+// Apply the middleware to all API routes
+app.use('/api/*', refreshTokenOnRequest);
 
 // User registration
 app.post('/api/auth/register', async (req, res) => {
@@ -373,6 +409,18 @@ app.put('/api/user/:id', async (req, res) => {
       const decoded = verifyToken(token);
       if (decoded) {
         userIdFromToken = decoded.userId;
+        
+        // Generate a new token with updated expiration time
+        const user = { _id: decoded.userId, username: decoded.username };
+        const newToken = generateAccessToken(user);
+        
+        // Update the token in the cookie
+        res.cookie('token', newToken, { 
+          httpOnly: true, 
+          secure: false, // Set to true in production with HTTPS
+          sameSite: 'strict', // Prevent CSRF attacks
+          maxAge: 2 * 60 * 60 * 1000 // 2 hours
+        });
       }
     }
     

@@ -87,6 +87,18 @@ const Layout = ({ children, activeMenu }) => {
               <li className={activeMenu === 'nextjs' ? 'active' : ''}>
                 <Link href="/vite-nextjs">Next.js</Link>
               </li>
+              <li className={activeMenu === 'product-showcase' ? 'active' : ''}>
+                <Link href="/product-showcase">产品展示</Link>
+              </li>
+              <li className={activeMenu === 'iphone' ? 'active' : ''}>
+                <Link href="/iphone">iPhone</Link>
+              </li>
+              <li className={activeMenu === 'iphone-ref' ? 'active' : ''}>
+                <Link href="/iphone-ref">iPhone 参考</Link>
+              </li>
+              <li className={activeMenu === 'iphone-showcase' ? 'active' : ''}>
+                <Link href="/iphone-showcase">iPhone 展示</Link>
+              </li>
               <li className={activeMenu === 'browser' ? 'active' : ''}>
                 <Link href="/browser">浏览器</Link>
               </li>

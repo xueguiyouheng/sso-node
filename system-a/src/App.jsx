@@ -18,15 +18,6 @@ function App() {
 
   useEffect(() => {
     checkAuthStatus();
-    
-    // Periodically check auth status
-    const interval = setInterval(() => {
-      checkAuthStatus();
-    }, 5000); // Check every 5 seconds
-    
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
 
   const checkAuthStatus = async () => {
